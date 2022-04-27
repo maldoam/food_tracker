@@ -20,9 +20,8 @@ class Event(db.Model):
 
 def format_event(event):
     return {
-        "description": event.description, 
-        "id": event.id, 
-        "created_at": event.created_at
+        "product_name": event.product_name, 
+        "ingredients_text": event.ingredients_text
     }
 
 
