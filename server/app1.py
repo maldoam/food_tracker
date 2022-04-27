@@ -13,10 +13,10 @@ class Event(db.Model):
     ingredients_text = db.Column(db.String(4096), nullable = False)
 
     def __repr__(self):
-        return f"Event: {self.description}"
+        return f"Food: {self.product_name}"
 
     def __init__(self, description):
-        self.description = description
+        self.product_name = product_name
 
 def format_event(event):
     return {
