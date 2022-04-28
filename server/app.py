@@ -9,6 +9,7 @@ db = SQLAlchemy(app)
 CORS(app)
 
 class Event(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
 	product_name = db.Column(db.String(256), nullable = False)
 	ingredients_text = db.Column(db.String(4096), nullable = False)
 
@@ -20,6 +21,7 @@ class Event(db.Model):
 
 def format_event(event):
 	return {
+		"id": event.id,
 		"product_name": event.product_name,
 		"ingredients_text": event.ingredients_text
 	}
