@@ -9,32 +9,32 @@ db = SQLAlchemy(app)
 CORS(app)
 
 class Event(db.Model):
-    product_name = db.Column(db.String(256))
-    ingredients_text = db.Column(db.String(4096), nullable = False)
+	product_name = db.Column(db.String(256), nullable = False)
+	ingredients_text = db.Column(db.String(4096), nullable = False)
 
-    def __repr__(self):
-        return f"Food: {self.product_name}"
+	def __repr__(self):
+		return f"Event: {self.description}"
 
-    def __init__(self, description):
-        self.product_name = product_name
+	def __init__(self, description):
+		self.description = description
 
 def format_event(event):
-    return {
-        "product_name": event.product_name, 
-        "ingredients_text": event.ingredients_text
-    }
+	return {
+		"product_name": event.product_name,
+		"ingredients_text": event.ingredients_text
+	}
 
-
-# Get single Event
+# Get all Events
 @app.route("/api/events/<id>", methods = ["GET"])
-def get_event(id):
-    events = db.query(Event).filter(Event.ingredients_text.like('%' + id + '%')).all()
-    event_list = []
-    for event in events:
-        event_list.append(format_event(event))
+def get_events(id):
+	events = db.query(Event).filter(Event.ingredients_text.like('%' + id + '%')).all()
+	event_list = []
 
-    return {"events": event_list}
+	for event in events:
+		event_list.append(format_event(event))
+
+	return {"events": event_list}
 
 if __name__ == "__main__":
-    app.run(debug = True)
+	app.run(debug = True)
 
