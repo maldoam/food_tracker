@@ -28,11 +28,12 @@ def format_event(event):
 # Get single Event
 @app.route("/api/events/<id>", methods = ["GET"])
 def get_event(id):
-    event = db.session.execute("SELECT product_name FROM food_products WHERE ingredients_text LIKE '%Organic%'")
-    formatted_event = format_event(event)
+    events = db.query(Event).filter(Event.ingredients_text.like('%' + id + '%')).all()
+    event_list = []
+    for event in events:
+        event_list.append(format_event(event))
 
-    return {"event": formatted_event}
-
+    return {"events": event_list}
 
 if __name__ == "__main__":
     app.run(debug = True)
