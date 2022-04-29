@@ -31,10 +31,16 @@ function App() {
     }
   ]);
 
+
+
   return (
     <div className = "container">
       <Header />
-      <Foods foods = {foods}/>
+      {
+        (foods.length > 0) ? 
+        (<Foods foods = {foods}/>) : 
+        ("No Foods to show")
+      }
     </div>
   );
 }
