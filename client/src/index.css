@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  image-rendering: pixelated;
   margin: 0;
   padding: 0;
 }
@@ -54,18 +55,18 @@ body {
   width: 100%;
 }
 
-.task {
+.food {
   background: #f4f4f4;
   margin: 5px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   cursor: pointer;
 }
 
-.task.reminder {
+.food.reminder {
   border-left: 5px solid green;
 }
 
-.task h3 {
+.food h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
