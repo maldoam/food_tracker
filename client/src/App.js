@@ -1,8 +1,10 @@
 import {useState} from "react";
 import Header from "./components/Header"
 import Foods from "./components/Foods"
+import FindFood from "./components/FindFood"
 
 function App() {
+  const [showFindFood, setShowFindFood] = useState(false);
   const [foods, setFoods] = useState([
     {
       "id": 13,
@@ -31,11 +33,22 @@ function App() {
     }
   ]);
 
-
+  // Find Food
+  const findFood = (ingredient) => {
+    console.log(ingredient);
+  }
 
   return (
     <div className = "container">
-      <Header />
+      <Header 
+        onFind = {() => setShowFindFood(!showFindFood)} 
+        showFindFood = {showFindFood}
+      />
+      {
+        (showFindFood) ? 
+        (<FindFood onFind = {findFood}/>) :
+        ("")
+      }
       {
         (foods.length > 0) ? 
         (<Foods foods = {foods}/>) : 
