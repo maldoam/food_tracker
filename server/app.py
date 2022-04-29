@@ -9,7 +9,7 @@ db = SQLAlchemy(app)
 
 CORS(app)
 
-class Food(db.Model):
+class food_products(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     product_name = db.Column(db.String(256), nullable = False)
     ingredients_text = db.Column(db.String(4096), nullable = False)
@@ -28,7 +28,7 @@ def format_food(food):
 # Get Foods based on Ingredient entered
 @app.route("/api/food/<ingredient>", methods = ["GET"])
 def get_foods(ingredient):
-    foods = Food.query.filter(Food.ingredients_text.like('%' + ingredient + '%')).all()
+    foods = db.query(food_products).filter(food_products.ingredients_text.like('%' + ingredient + '%')).all()
     foods_list = []
 
     for food in foods:
