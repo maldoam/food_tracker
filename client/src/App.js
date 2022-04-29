@@ -1,3 +1,5 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import {useState, useEffect} from "react";
 import Header from "./components/Header"
 import Foods from "./components/Foods"

@@ -1,4 +1,6 @@
 // import {FaTimes} from "react-icons/fa"
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 const Food = ({food}) => {
   return (
