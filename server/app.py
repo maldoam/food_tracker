@@ -8,34 +8,34 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://ubuntu:51C7C`q&~yu}118tka5
 db = SQLAlchemy(app)
 CORS(app)
 
-class Event(db.Model):
+class Food(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	product_name = db.Column(db.String(256), nullable = False)
 	ingredients_text = db.Column(db.String(4096), nullable = False)
 
 	def __repr__(self):
-		return f"Event: {self.description}"
+		return f"Food: {self.description}"
 
 	def __init__(self, description):
 		self.description = description
 
-def format_event(event):
+def format_food(food):
 	return {
-		"id": event.id,
-		"product_name": event.product_name,
-		"ingredients_text": event.ingredients_text
+		"id": food.id,
+		"product_name": food.product_name,
+		"ingredients_text": food.ingredients_text
 	}
 
-# Get all Events
-@app.route("/api/events/<id>", methods = ["GET"])
-def get_events(id):
-	events = db.query(Event).filter(Event.ingredients_text.like('%' + id + '%')).all()
-	event_list = []
+# Get Foods based on ingredient
+@app.route("/api/food/<ingredient>", methods = ["GET"])
+def get_foods(ingredient):
+	foods = db.query(Food).filter(Food.ingredients_text.like('%' + ingredient + '%')).all()
+	foods_list = []
 
-	for event in events:
-		event_list.append(format_event(event))
+	for food in foods:
+		foods_list.append(format_food(food))
 
-	return {"events": event_list}
+	return {"foods": foods_list}
 
 if __name__ == "__main__":
 	app.run(debug = True)
