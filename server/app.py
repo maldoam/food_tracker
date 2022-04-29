@@ -33,7 +33,7 @@ def format_food(food):
 # Get Foods based on Ingredient entered
 @app.route("/api/food/<ingredient>", methods = ["GET"])
 def get_foods(ingredient):
-    foods = db.query(Food).filter(Food.ingredients_text.like('%' + ingredient + '%')).all()
+    foods = Food.query.filter(Food.ingredients_text.like('%' + ingredient + '%')).all()
     foods_list = []
 
     for food in foods:
