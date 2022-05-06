@@ -1,7 +1,8 @@
 # Food Tracker
 A web application that tracks Food Allergies <br>
 uses Flask for the backend and React.js for the frontend <br>
-Live at http://3.91.176.125/ until December 2022
+<br>
+**Live at http://3.91.176.125/ until December 2022**
 
 ## Installation requirements
 - Node.js and npm
