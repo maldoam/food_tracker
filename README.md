@@ -4,7 +4,7 @@ uses Flask for the backend and React.js for the frontend <br>
 <br>
 **Live at http://3.91.176.125/ until December 2022** <br>
 
-The data was sourced from the Open food facts database at https://world.openfoodfacts.org/data
+The data was sourced from the Open food facts database at https://world.openfoodfacts.org/data as a JSONL file
 
 ## Installation requirements
 - Node.js and npm
